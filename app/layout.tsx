@@ -13,42 +13,36 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Veltra Creative | Jasa Pembuatan Website & Sistem Digital Custom',
-  description: 'Solusi pembuatan website super cepat (Next.js & Go). Spesialis Landing Page Umroh, E-commerce, dan Sistem Sekolah. Konsultasi Gratis!',
-  keywords: [
-    'Veltra', 
-    'Jasa Pembuatan Website', 
-    'Landing Page Umroh', 
-    'Sistem Sekolah Digital', 
-    'Web Developer Indonesia',
-    'Next.js Developer'
-  ],
-  authors: [{ name: 'Veltra Creative' }],
-  metadataBase: new URL('https://veltra.my.id'),
+  title: "Veltra Creative | Solusi Website Profesional",
+  description:
+    "Website profesional dan solusi teknologi digital untuk bisnis Indonesia.",
+
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
   openGraph: {
-    title: 'Veltra Creative | Ahli Web & Digital Solution',
-    description: 'Bikin bisnis Anda naik level dengan website profesional.',
-    url: 'https://veltra.my.id',
-    siteName: 'Veltra Portfolio',
+    type: "website",
+    locale: "id_ID",
+    siteName: "Veltra Creative",
+    title: "Veltra Creative | Solusi Website Profesional",
+    description:
+      "Wujudkan website profesional untuk mengembangkan bisnis Anda bersama Veltra Creative.",
     images: [
       {
-        url: '/og-image.jpg',
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: 'Preview Website Veltra',
+        alt: "Veltra Creative",
       },
     ],
-    locale: 'id_ID',
-    type: 'website',
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Veltra Creative | Ahli Web & Digital Solution',
-    description: 'Solusi website cepat dan sistem custom untuk bisnis Anda.',
-    images: ['/og-image.jpg'],
-  },
-  category: 'technology',
-}
+};
 
 export default function RootLayout({
   children,

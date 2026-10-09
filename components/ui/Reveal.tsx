@@ -1,66 +1,76 @@
-import React, { useEffect, useRef, useState } from 'react';
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
 
 interface RevealProps {
   children: React.ReactNode;
-  width?: 'fit-content' | '100%';
-  direction?: 'up' | 'down' | 'left' | 'right';
-  delay?: number; // in seconds
+  width?: "fit-content" | "100%";
+  direction?: "up" | "down" | "left" | "right";
+  delay?: number;
   className?: string;
 }
 
-export const Reveal: React.FC<RevealProps> = ({ 
-  children, 
-  width = 'fit-content', 
-  direction = 'up',
+export const Reveal: React.FC<RevealProps> = ({
+  children,
+  width = "100%",
+  direction = "up",
   delay = 0,
-  className = ""
+  className = "",
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const element = ref.current;
+
+    if (!element) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          // Once visible, we can disconnect if we only want it to animate once
-          observer.disconnect();
+          observer.unobserve(element);
         }
       },
       {
-        threshold: 0.1, // Trigger when 10% of the element is visible
-        rootMargin: "0px 0px -50px 0px" // Trigger slightly before it enters fully
+        threshold: 0.1,
+        rootMargin: "0px 0px -40px 0px",
       }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
+    observer.observe(element);
 
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
-    };
+    return () => observer.disconnect();
   }, []);
 
-  const getTransform = () => {
-    switch (direction) {
-      case 'up': return 'translate-y-10';
-      case 'down': return '-translate-y-10';
-      case 'left': return 'translate-x-10';
-      case 'right': return '-translate-x-10';
-      default: return 'translate-y-10';
-    }
+  const hiddenTransform: Record<
+    NonNullable<RevealProps["direction"]>,
+    string
+  > = {
+    up: "translateY(24px)",
+    down: "translateY(-24px)",
+    left: "translateX(-24px)",
+    right: "translateX(24px)",
   };
 
   return (
-    <div ref={ref} style={{ width }} className={`relative overflow-hidden ${className}`}>
+    <div
+      ref={ref}
+      style={{ width, maxWidth: "100%" }}
+      className={`relative min-w-0 ${className}`}
+    >
       <div
-        className={`transition-all duration-700 ease-out transform ${
-          isVisible ? 'opacity-100 translate-y-0 translate-x-0' : `opacity-0 ${getTransform()}`
-        }`}
-        style={{ transitionDelay: `${delay}s` }}
+        style={{
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible
+            ? "translate3d(0, 0, 0)"
+            : hiddenTransform[direction],
+          transitionProperty: "opacity, transform",
+          transitionDuration: "700ms",
+          transitionTimingFunction: "ease-out",
+          transitionDelay: `${delay}s`,
+          willChange: isVisible ? "auto" : "opacity, transform",
+        }}
       >
         {children}
       </div>
