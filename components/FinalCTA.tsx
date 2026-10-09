@@ -1,88 +1,167 @@
+"use client";
+
 import { useRef } from "react";
 import { motion, useInView } from "motion/react";
-import { MessageCircle, ArrowRight, CheckCircle } from "lucide-react";
+import {
+  MessageCircle,
+  ArrowUpRight,
+  CheckCircle2,
+  Sparkles,
+} from "lucide-react";
+
+const whatsappUrl =
+  "https://wa.me/6285710950704?text=Halo%20Veltra%20Creative,%20saya%20ingin%20berkonsultasi%20mengenai%20website%20untuk%20bisnis%20saya%20dan%20mendapatkan%20proposal.";
+
+const benefits = [
+  "Konsultasi awal gratis",
+  "Solusi sesuai kebutuhan bisnis",
+  "Proposal yang transparan",
+];
 
 export function FinalCTA() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const ref = useRef<HTMLElement>(null);
+  const isInView = useInView(ref, {
+    once: true,
+    margin: "-80px",
+  });
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden" ref={ref}>
-      {/* Animated Background */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 right-10 w-96 h-96 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-10 left-10 w-72 h-72  rounded-full blur-3xl animate-pulse"></div>
-      </div>
-
-      <div className="max-w-5xl mx-auto relative z-10">
+    <section
+      ref={ref}
+      className="relative overflow-hidden bg-white px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28"
+    >
+      <div className="relative mx-auto max-w-7xl">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center"
+          initial={{ opacity: 0, y: 28 }}
+          animate={
+            isInView
+              ? { opacity: 1, y: 0 }
+              : { opacity: 0, y: 28 }
+          }
+          transition={{ duration: 0.65, ease: "easeOut" }}
+          className="relative isolate overflow-hidden rounded-3xl bg-[#091D50] px-6 py-14 text-center shadow-2xl shadow-blue-950/10 sm:px-12 sm:py-16 lg:px-20 lg:py-20"
         >
-          {/* Icon */}
-
-          {/* Headline */}
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6"
+          {/* Background decoration */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
           >
-            Siap Tingkatkan Bisnis Anda dengan Website Profesional?
+            <div className="absolute -right-24 -top-32 h-80 w-80 rounded-full bg-blue-500/20 blur-[100px]" />
+            <div className="absolute -bottom-40 -left-20 h-80 w-80 rounded-full bg-orange-500/15 blur-[100px]" />
+
+            <div
+              className="absolute inset-0 opacity-[0.06]"
+              style={{
+                backgroundImage:
+                  "radial-gradient(#FFFFFF 0.8px, transparent 0.8px)",
+                backgroundSize: "24px 24px",
+              }}
+            />
+          </div>
+
+          {/* Eyebrow */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={
+              isInView
+                ? { opacity: 1, y: 0 }
+                : { opacity: 0, y: 12 }
+            }
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.07] px-4 py-2 backdrop-blur-sm"
+          >
+            <Sparkles size={15} className="text-orange-400" />
+            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-blue-100">
+              Mari Mulai Proyek Anda
+            </span>
+          </motion.div>
+
+          {/* Heading */}
+          <motion.h2
+            initial={{ opacity: 0, y: 16 }}
+            animate={
+              isInView
+                ? { opacity: 1, y: 0 }
+                : { opacity: 0, y: 16 }
+            }
+            transition={{ duration: 0.55, delay: 0.15 }}
+            className="mx-auto max-w-4xl text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-6xl"
+          >
+            Punya Ide untuk Bisnis Anda?
+            <span className="mt-2 block bg-linear-to-r from-orange-300 via-orange-400 to-amber-200 bg-clip-text text-transparent">
+              Mari Wujudkan Bersama.
+            </span>
           </motion.h2>
 
           {/* Description */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-lg sm:text-xl mb-8 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 16 }}
+            animate={
+              isInView
+                ? { opacity: 1, y: 0 }
+                : { opacity: 0, y: 16 }
+            }
+            transition={{ duration: 0.55, delay: 0.22 }}
+            className="mx-auto mt-6 max-w-2xl text-base leading-8 text-blue-100/75 sm:text-lg"
           >
-            Jangan biarkan kompetitor unggul! Mulai perjalanan digital Anda hari ini dengan konsultasi gratis bersama tim expert kami.
+            Ceritakan kebutuhan bisnis Anda kepada Veltra Creative.
+            Kami akan membantu mengeksplorasi solusi yang tepat dan
+            menyiapkan proposal sesuai ruang lingkup proyek Anda.
           </motion.p>
 
           {/* Benefits */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-col sm:flex-row justify-center gap-6 mb-10"
+            initial={{ opacity: 0, y: 12 }}
+            animate={
+              isInView
+                ? { opacity: 1, y: 0 }
+                : { opacity: 0, y: 12 }
+            }
+            transition={{ duration: 0.55, delay: 0.3 }}
+            className="mx-auto mt-8 flex max-w-3xl flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap sm:gap-x-7 sm:gap-y-4"
           >
-            <div className="flex items-center gap-2">
-              <CheckCircle size={20} className="text-[#00D4FF] flex-shrink-0" />
-              <span className="text-sm sm:text-base">Konsultasi Gratis</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle size={20} className="text-[#00D4FF] flex-shrink-0" />
-              <span className="text-sm sm:text-base">Gratis Revisi Design</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle size={20} className="text-[#00D4FF] flex-shrink-0" />
-              <span className="text-sm sm:text-base">Garansi Kepuasan</span>
-            </div>
+            {benefits.map((benefit) => (
+              <div
+                key={benefit}
+                className="flex items-center gap-2.5 text-sm font-medium text-blue-50/90"
+              >
+                <CheckCircle2
+                  size={17}
+                  className="shrink-0 text-emerald-400"
+                />
+                <span>{benefit}</span>
+              </div>
+            ))}
           </motion.div>
 
-          {/* CTA Button */}
+          {/* CTA */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.6 }}
+            initial={{ opacity: 0, y: 12 }}
+            animate={
+              isInView
+                ? { opacity: 1, y: 0 }
+                : { opacity: 0, y: 12 }
+            }
+            transition={{ duration: 0.55, delay: 0.4 }}
+            className="mt-10 flex flex-col items-center justify-center gap-4"
           >
             <a
-              href="https://wa.me/6285710950704?text=Halo%20Veltra%20Creative,%20saya%20ingin%20konsultasi%20gratis%20untuk%20membuat%20website%20profesional%20untuk%20bisnis%20saya.%20Mohon%20info%20lebih%20lanjut!"
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-3 bg-[#FF6B35] text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-[#ff5722] transition-all hover:shadow-2xl hover:-translate-y-1 shadow-xl"
+              className="group inline-flex w-full items-center justify-center gap-3 rounded-xl bg-[#FF6B35] px-7 py-4 text-sm font-bold text-white shadow-lg shadow-black/10 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#F45B28] hover:shadow-xl sm:w-auto sm:px-8 sm:text-base"
             >
-              <MessageCircle size={24} />
-              Chat via WhatsApp Sekarang
-              <ArrowRight
-                size={24}
-                className="group-hover:translate-x-2 transition-transform"
+              <MessageCircle size={20} />
+              Konsultasi & Minta Proposal
+              <ArrowUpRight
+                size={18}
+                className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
               />
             </a>
+
+            <p className="text-xs leading-6 text-blue-100/50 sm:text-sm">
+              Sampaikan ide Anda. Kami bantu diskusikan langkah berikutnya.
+            </p>
           </motion.div>
         </motion.div>
       </div>

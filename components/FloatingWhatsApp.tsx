@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { MessageCircle } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa6";
 
 export function FloatingWhatsApp() {
   return (
@@ -14,12 +14,10 @@ export function FloatingWhatsApp() {
       whileHover={{ scale: 1.15 }}
       whileTap={{ scale: 0.95 }}
     >
-      <MessageCircle size={32} />
-      
-      {/* Pulse Effect */}
+      <FaWhatsapp size={32} />
+
       <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-75"></span>
-      
-      {/* Tooltip */}
+
       <span className="absolute right-20 bg-[#0A2463] text-white px-4 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
         Chat dengan kami!
       </span>

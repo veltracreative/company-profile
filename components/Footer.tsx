@@ -1,81 +1,150 @@
-import { Mail, Phone, MapPin } from "lucide-react";
-import { FaSquareInstagram } from "react-icons/fa6";
-import { AiFillTikTok } from "react-icons/ai";
-import { FaSquareFacebook } from "react-icons/fa6";
+"use client";
 
+import { Phone, MapPin, ArrowUpRight } from "lucide-react";
+import Image from "next/image";
+
+const whatsappUrl =
+  "https://wa.me/6285710950704?text=Halo%20Veltra%20Creative,%20saya%20ingin%20berkonsultasi%20mengenai%20layanan%20website.";
 
 export function Footer() {
   return (
-    <footer className=" py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="md:flex md:justify-between mb-8">
+    <footer className="relative overflow-hidden bg-[#091D50] px-4 pb-6 pt-16 text-white sm:px-6 sm:pt-20 lg:px-8">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-32 -top-32 h-80 w-80 rounded-full bg-[#FF6B35]/10 blur-3xl"
+      />
+
+      <div className="relative mx-auto max-w-7xl">
+        <div className="grid gap-12 border-b border-white/10 pb-12 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr] lg:gap-16">
           {/* Company Info */}
-          <div className="md:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <span className="text-xl font-bold">Veltra Creative</span>
-            </div>
-            <p className="mb-4 max-w-3xl">
-              Solusi website profesional untuk UMKM Indonesia. Kami membantu bisnis Anda berkembang dengan teknologi digital yang cepat, aman, dan terpercaya.
+          <div>
+            <a
+              href="#home"
+              aria-label="Veltra Creative - Kembali ke halaman utama"
+              className="mb-5 inline-flex items-center gap-3"
+            >
+              <Image
+                src="/veltra.png"
+                alt="Veltra Creative"
+                width={50}
+                height={50}
+                priority
+                className="h-15 w-25 object-cover rounded-xl"
+              />
+            </a>
+
+            <p className="max-w-md text-sm leading-7 text-blue-100/75">
+              Partner digital untuk membantu bisnis Indonesia berkembang
+              melalui website profesional dan solusi teknologi yang sesuai
+              dengan kebutuhan bisnis Anda.
             </p>
-            <div className="flex gap-4">
-              <a
-                href="https://www.instagram.com/veltracreative/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-all hover:scale-110"
-              >
-                <FaSquareInstagram size={36} />
-              </a>
-              <a
-                href="https://www.facebook.com/profile.php?id=61587801910205&locale=id_ID"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-all hover:scale-110"
-              >
-                <FaSquareFacebook size={36} />
-              </a>
-              <a
-                href="https://vm.tiktok.com/ZS9dHwWn1Rd73-BDza8/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-all hover:scale-110"
-              >
-                <AiFillTikTok size={59} />
-              </a>
-            </div>
+          </div>
+
+          {/* Navigation */}
+          <div>
+            <h3 className="mb-5 text-sm font-bold uppercase tracking-[0.15em] text-white">
+              Navigasi
+            </h3>
+
+            <ul className="space-y-3 text-sm text-blue-100/75">
+              <li>
+                <a
+                  href="#home"
+                  className="transition-colors hover:text-[#FF6B35]"
+                >
+                  Beranda
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  className="transition-colors hover:text-[#FF6B35]"
+                >
+                  Layanan
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#portfolio"
+                  className="transition-colors hover:text-[#FF6B35]"
+                >
+                  Portofolio
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#faq"
+                  className="transition-colors hover:text-[#FF6B35]"
+                >
+                  FAQ
+                </a>
+              </li>
+            </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h3 className="font-bold text-lg mb-4">Hubungi Kami</h3>
-            <ul className="space-y-3">
+            <h3 className="mb-5 text-sm font-bold uppercase tracking-[0.15em] text-white">
+              Hubungi Kami
+            </h3>
+
+            <ul className="space-y-4 text-sm text-blue-100/75">
               <li className="flex items-start gap-3">
-                <Phone size={18} className="mt-1 flex-shrink-0 text-[#00D4FF]" />
-                <a href="tel:+6281234567890" className=" hover:text-[#00D4FF] transition-colors">
+                <Phone
+                  size={18}
+                  className="mt-0.5 shrink-0 text-[#FF6B35]"
+                />
+                <a
+                  href="tel:+6285710950704"
+                  className="transition-colors hover:text-white"
+                >
                   +62 857-1095-0704
                 </a>
               </li>
-              <li className="flex items-start gap-3">
-                <Mail size={18} className="mt-1 flex-shrink-0  text-[#00D4FF]" />
-                <a href="mailto: hanifsholihin884@gmail.com" className=" transition-colors hover:text-[#00D4FF]">
+
+              {/* <li className="flex items-start gap-3">
+                <Mail
+                  size={18}
+                  className="mt-0.5 shrink-0 text-[#FF6B35]"
+                />
+                <a
+                  href="mailto:hanifsholihin884@gmail.com"
+                  className="break-all transition-colors hover:text-white"
+                >
                   hanifsholihin884@gmail.com
                 </a>
-              </li>
+              </li> */}
+
               <li className="flex items-start gap-3">
-                <MapPin size={18} className="mt-1 flex-shrink-0 text-[#00D4FF]" />
-                <span className="hover:text-[#00D4FF]">
-                  Jakarta, Indonesia
-                </span>
+                <MapPin
+                  size={18}
+                  className="mt-0.5 shrink-0 text-[#FF6B35]"
+                />
+                <span>Jakarta, Indonesia</span>
               </li>
             </ul>
+
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#FF8A61] transition-colors hover:text-white"
+            >
+              Konsultasi proyek
+              <ArrowUpRight size={16} />
+            </a>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/10 text-center text-sm">
-          <p>© 2026 Hanif Digital Solutions. All rights reserved.</p>
-          <p className="mt-2">
-            Built with ❤️ for Indonesian SMEs
+        <div className="flex flex-col gap-3 pt-6 text-center text-xs text-blue-100/50 sm:flex-row sm:items-center sm:justify-between sm:text-left">
+          <p>
+            © {new Date().getFullYear()} Veltra Creative. All rights reserved.
+          </p>
+
+          <p>
+            Dibuat dengan <span className="text-[#FF6B35]">♥</span> untuk
+            bisnis Indonesia.
           </p>
         </div>
       </div>
